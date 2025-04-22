@@ -5,35 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¡Estás Invitado!</title>
     <style>
-        body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; 
-               height: 100vh; background: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.es%2Ffotos%2Fboda&psig=AOvVaw2NXuxj91fTNXC-9EQGCfj0&ust=1745372604281000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJiP1uTB6owDFQAAAAAdAAAAABAE') center/cover no-repeat; }
-        #bienvenida { text-align: center; background: rgba(255,255,255,0.8); padding: 20px; border-radius: 20px; }
-        #evento { display: none; text-align: center; color: white; }
-        button { padding: 10px 20px; font-size: 18px; border-radius: 10px; border: none; cursor: pointer; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        #bienvenida, #evento {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        #evento {
+            display: none;
+            color: #333;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 2em;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            background-color: #0077ff;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #005fcc;
+        }
+
+        p {
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
-    <div id="bienvenida">
-        <h1>¡Estás invitado a [NUESTRA BODA]!</h1>
-        <p>[21 DE SEPTIEMBRE 2025] | [LA RIVIERA]</p>
-        <button onclick="empezarEvento()">Entrar</button>
-    </div>
 
-    <div id="evento">
-        <h2>¡Bienvenido a [Nombre del Evento]!</h2>
-        <p>¡Nos vemos el [Fecha] en [Lugar]!</p>
-    </div>
+<div id="bienvenida">
+    <h1>¡Estás invitado a Nuestra Gran Fiesta!</h1>
+    <p>📅 Fecha: 15 de Junio 2025</p>
+    <p>📍 Lugar: Madrid, España</p>
+    <button onclick="empezarEvento()">Entrar</button>
+</div>
 
-    <audio id="musica" loop>
-        <source src="https://drive.google.com/file/d/1TcmfFjzkfF39vnbBrfBb4YoPo8i_8OXA/view?usp=drive_link" type="audio/mp3">
-    </audio>
+<div id="evento">
+    <h1>¡Bienvenido a la Fiesta!</h1>
+    <p>Prepárate para una noche inolvidable 🎉</p>
+    <p>Nos vemos en Madrid el 15 de Junio a las 20:00h.</p>
+</div>
 
-    <script>
-        function empezarEvento() {
-            document.getElementById('bienvenida').style.display = 'none';
-            document.getElementById('evento').style.display = 'block';
-            document.getElementById('musica').play();
-        }
-    </script>
+<audio id="musica" loop>
+    <source src="https://drive.google.com/uc?export=download&id=1TcmfFjzkfF39vnbBrfBb4YoPo8i_8OXA" type="audio/mp3">
+    Tu navegador no soporta el audio.
+</audio>
+
+<script>
+    function empezarEvento() {
+        document.getElementById('bienvenida').style.display = 'none';
+        document.getElementById('evento').style.display = 'block';
+        document.getElementById('musica').play();
+    }
+</script>
+
 </body>
 </html>
