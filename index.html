@@ -1,89 +1,149 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Estás Invitado!</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
-            background-size: cover;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación de Boda</title>
+  <style>
+    :root {
+      --blanco: #ffffff;
+      --negro: #000000;
+      --dorado: #c5a253;
+      --verde-olivo: #708238;
+    }
 
-        #bienvenida, #evento {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-        }
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: var(--blanco);
+      color: var(--negro);
+      scroll-behavior: smooth;
+    }
 
-        #evento {
-            display: none;
-            color: #333;
-        }
+    .bienvenida {
+      height: 100vh;
+      background-color: var(--blanco);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
 
-        h1 {
-            margin-top: 0;
-            font-size: 2em;
-        }
+    .bienvenida h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
 
-        button {
-            margin-top: 20px;
-            padding: 12px 25px;
-            font-size: 18px;
-            border: none;
-            background-color: #0077ff;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+    .ilustracion {
+      width: 180px;
+      margin-bottom: 1rem;
+    }
 
-        button:hover {
-            background-color: #005fcc;
-        }
+    .btn-empezar {
+      background-color: var(--dorado);
+      border: none;
+      color: var(--blanco);
+      padding: 0.75rem 1.5rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: background-color 0.3s ease;
+    }
 
-        p {
-            margin: 10px 0;
-        }
-    </style>
+    .btn-empezar:hover {
+      background-color: #b19045;
+    }
+
+    .contenido {
+      display: none;
+      padding: 2rem;
+    }
+
+    .seccion {
+      max-width: 800px;
+      margin: 0 auto 3rem auto;
+      text-align: center;
+    }
+
+    .seccion h2 {
+      color: var(--verde-olivo);
+      font-size: 1.5rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      margin-top: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
 
-<div id="bienvenida">
-    <h1>¡Estás invitado a Nuestra Gran Fiesta!</h1>
-    <p>📅 Fecha: 15 de Junio 2025</p>
-    <p>📍 Lugar: Madrid, España</p>
-    <button onclick="empezarEvento()">Entrar</button>
-</div>
+  <section class="bienvenida" id="bienvenida">
+    <h1>"Cada familia tiene una historia, bienvenido a la nuestra..."</h1>
+    <img src="https://via.placeholder.com/180x120?text=👩‍❤️‍👨🐶🐶🐱" alt="Ilustración pareja y mascotas" class="ilustracion" />
+    <button class="btn-empezar" onclick="empezar()">Sí, acepto</button>
+  </section>
 
-<div id="evento">
-    <h1>¡Bienvenido a la Fiesta!</h1>
-    <p>Prepárate para una noche inolvidable 🎉</p>
-    <p>Nos vemos en Madrid el 15 de Junio a las 20:00h.</p>
-</div>
+  <section class="contenido" id="contenido">
+    <div class="seccion">
+      <h2>¡Nos casamos!</h2>
+      <p>
+        Con mucha emoción, queremos invitarte a compartir un día muy especial con nosotros.<br>
+        Te esperamos el <strong>6 de octubre de 2025</strong> para celebrar el amor, la familia y la amistad.
+      </p>
+    </div>
 
-<!-- Audio de prueba de ejemplo: música instrumental libre -->
-<audio id="musica" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
-    Tu navegador no soporta el audio.
-</audio>
+    <div class="seccion">
+      <h2>Confirmá tu asistencia</h2>
+      <p>
+        Por favor, completá el siguiente formulario para saber si contaremos con tu presencia 🌿
+      </p>
+      <!-- Reemplazá este iframe con tu Google Form -->
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDUMMYFORMURL/viewform?embedded=true" loading="lazy">Cargando…</iframe>
+    </div>
 
-<script>
-    function empezarEvento() {
-        document.getElementById('bienvenida').style.display = 'none';
-        document.getElementById('evento').style.display = 'block';
-        document.getElementById('musica').play();
+    <footer>
+      Hecho con amor 💛 por [Tu Nombre] · ¡Gracias por acompañarnos!
+    </footer>
+  </section>
+
+  <!-- Música -->
+  <audio id="musica" loop>
+    <source src="https://github.com/nuestrabodagarmazoni/invitacion/raw/refs/heads/main/Lady%20Gaga,%20Bruno%20Mars%20-%20Die%20With%20A%20Smile%20(Official%20Music%20Video)%20-%20LadyGagaVEVO.mp3" type="audio/mpeg" />
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    function empezar() {
+      document.getElementById('bienvenida').style.display = 'none';
+      document.getElementById('contenido').style.display = 'block';
+
+      const musica = document.getElementById('musica');
+      musica.volume = 0;
+      musica.play();
+
+      let vol = 0;
+      const subirVolumen = setInterval(() => {
+        if (vol < 0.5) {
+          vol += 0.01;
+          musica.volume = vol;
+        } else {
+          clearInterval(subirVolumen);
+        }
+      }, 200);
     }
-</script>
+  </script>
 
 </body>
 </html>
