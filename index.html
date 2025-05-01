@@ -85,6 +85,25 @@
       font-size: 0.9rem;
       color: #555;
     }
+
+    /* ✨ Destello blanco */
+    .destello {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+      opacity: 1;
+      z-index: 9999;
+      pointer-events: none;
+      animation: fadeOut 1s ease-out forwards;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
   </style>
 </head>
 <body>
@@ -125,13 +144,17 @@
   </audio>
 
   <script>
+    const musica = document.getElementById('musica');
+    let reproduciendo = false;
+
     function empezar() {
       document.getElementById('bienvenida').style.display = 'none';
       document.getElementById('contenido').style.display = 'block';
 
-      const musica = document.getElementById('musica');
       musica.volume = 0;
+      musica.currentTime = 0;
       musica.play();
+      reproduciendo = true;
 
       let vol = 0;
       const subirVolumen = setInterval(() => {
@@ -143,6 +166,34 @@
         }
       }, 200);
     }
+
+    // Detectar cambio de pestaña y reiniciar música + animación de destello
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && reproduciendo) {
+        musica.pause();
+        musica.currentTime = 0;
+      } else if (!document.hidden && reproduciendo) {
+        musica.play();
+
+        // Crear destello
+        const destello = document.createElement('div');
+        destello.className = 'destello';
+        document.body.appendChild(destello);
+
+        // Remover destello después de la animación
+        setTimeout(() => {
+          destello.remove();
+        }, 1000);
+      }
+    });
+
+    // Al cerrar/navegar fuera, detener música
+    window.addEventListener('beforeunload', () => {
+      if (reproduciendo) {
+        musica.pause();
+        musica.currentTime = 0;
+      }
+    });
   </script>
 
 </body>
