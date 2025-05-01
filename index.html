@@ -2,12 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Invitación de Boda</title>
-
-  <!-- Fuente elegante y legible -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
-
+  <!-- Fuente manuscrita -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     :root {
       --blanco: #ffffff;
@@ -27,7 +25,7 @@
 
     .bienvenida {
       height: 100vh;
-      background-image: url('https://raw.githubusercontent.com/nuestrabodagarmazoni/invitacion/main/eucalyptus.jpg');
+      background-image: url("URL_DE_TU_IMAGEN_DE_FONDO");
       background-size: cover;
       background-position: center;
       display: flex;
@@ -40,12 +38,11 @@
     }
 
     .bienvenida h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      margin-bottom: 1.5rem;
+      font-family: 'Georgia', serif;
+      font-size: 2rem;
+      margin-bottom: 1rem;
       color: var(--negro);
-      line-height: 1.4;
-      white-space: pre-line;
+      line-height: 1.5;
     }
 
     .btn-empezar {
@@ -78,7 +75,7 @@
 
     .seccion h2 {
       color: var(--verde-olivo);
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       margin-bottom: 1rem;
     }
 
@@ -91,8 +88,9 @@
     }
 
     .galeria img {
-      height: 300px;
-      border-radius: 20px;
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
       scroll-snap-align: center;
       flex-shrink: 0;
     }
@@ -104,6 +102,7 @@
       color: #555;
     }
 
+    /* Destello animado */
     .destello {
       position: fixed;
       top: 0;
@@ -114,24 +113,29 @@
       opacity: 0;
       pointer-events: none;
       z-index: 9999;
-      animation: flash 0.6s ease-out forwards;
+      animation: flash 0.5s ease-out forwards;
     }
 
     @keyframes flash {
-      0% { opacity: 0; }
-      30% { opacity: 1; }
-      100% { opacity: 0; }
+      0% {
+        opacity: 0;
+      }
+      30% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
     }
   </style>
 </head>
-
 <body>
 
   <section class="bienvenida" id="bienvenida">
     <h1>
-      Cada familia
-      tiene una historia...
-      deseamos que tú
+      Cada familia<br>
+      tiene una historia...<br>
+      deseamos que tú<br>
       seas testigo de la nuestra...
     </h1>
     <button class="btn-empezar" onclick="empezar()">Sí, acepto</button>
@@ -141,45 +145,57 @@
     <div class="seccion">
       <h2>Te invitamos cordialmente</h2>
       <p>
-        El matrimonio es el encuentro de dos almas que deciden compartir su vida, risas y sueños.<br>
-        Cada paso que damos juntos es una promesa de amor eterno,<br>
-        y queremos que seas testigo de este hermoso comienzo.
+        El amor es la fuerza que une nuestras almas y corazones.<br>
+        Queremos compartir este momento tan especial contigo.
       </p>
     </div>
 
     <div class="seccion">
       <h2>Cuándo</h2>
-      <p>El <strong>6 de octubre de 2025</strong>, será el día en que celebremos nuestro amor junto a ti.</p>
+      <p>
+        Lunes 6 de octubre de 2025<br>
+        18:00 hs
+      </p>
     </div>
 
     <div class="seccion">
       <h2>Dónde</h2>
-      <p>La ceremonia y la fiesta se llevarán a cabo en un lugar especial, que pronto compartiremos contigo.</p>
+      <p>
+        Salón de Eventos "La Esperanza"<br>
+        Av. Siempreviva 123, San Salvador de Jujuy
+      </p>
     </div>
 
     <div class="seccion">
       <h2>Código de vestimenta</h2>
-      <p>Formal elegante · Tonos neutros y naturales sugeridos · Celebremos con estilo.</p>
+      <p>
+        Elegante formal<br>
+        Colores sugeridos: tonos tierra y verde oliva
+      </p>
     </div>
 
     <div class="seccion">
-      <h2>Confirmación</h2>
-      <p>Pronto habilitaremos una forma para confirmar tu asistencia. ¡Gracias por esperarnos!</p>
-    </div>
-
-    <div class="seccion">
-      <h2>Momentos especiales</h2>
+      <h2>Galería de fotos</h2>
       <div class="galeria">
-        <img src="https://via.placeholder.com/400x300?text=Foto+1" alt="Foto 1">
-        <img src="https://via.placeholder.com/400x300?text=Foto+2" alt="Foto 2">
-        <img src="https://via.placeholder.com/400x300?text=Foto+3" alt="Foto 3">
+        <img src="URL_DE_TU_IMAGEN_1" alt="Foto 1">
+        <img src="URL_DE_TU_IMAGEN_2" alt="Foto 2">
+        <img src="URL_DE_TU_IMAGEN_3" alt="Foto 3">
+        <!-- Agrega más imágenes según sea necesario -->
       </div>
     </div>
 
     <div class="seccion">
-      <p style="font-style: italic; color: #666;">
-        Para que todos podamos disfrutar plenamente, esta será una celebración solo para adultos.<br>
-        ¡Gracias por tu comprensión y cariño!
+      <h2>Confirmación</h2>
+      <p>
+        Por favor, confirmá tu asistencia antes del 15 de septiembre.<br>
+        Contactanos al +54 9 388 123-4567 o al correo: boda@example.com
+      </p>
+    </div>
+
+    <div class="seccion">
+      <h2>Nota importante</h2>
+      <p>
+        Amamos a los niños, pero en esta ocasión deseamos que disfrutes de una noche especial para adultos.
       </p>
     </div>
 
@@ -190,7 +206,7 @@
 
   <!-- Música -->
   <audio id="musica" loop preload="auto">
-    <source src="https://github.com/nuestrabodagarmazoni/invitacion/raw/refs/heads/main/Lady%20Gaga,%20Bruno%20Mars%20-%20Die%20With%20A%20Smile%20(Official%20Music%20Video)%20-%20LadyGagaVEVO.mp3" type="audio/mpeg" />
+    <source src="URL_DE_TU_MUSICA.mp3" type="audio/mpeg" />
     Tu navegador no soporta audio.
   </audio>
 
@@ -202,14 +218,26 @@
       document.getElementById('bienvenida').style.display = 'none';
       document.getElementById('contenido').style.display = 'block';
 
+      // Mostrar destello blanco
       const destello = document.createElement('div');
       destello.classList.add('destello');
       document.body.appendChild(destello);
 
-      musica.volume = 0.4;
+      // Reproducir música suavemente
+      musica.volume = 0;
       musica.play();
+      let vol = 0;
+      const fadeIn = setInterval(() => {
+        if (vol < 0.5) {
+          vol += 0.05;
+          musica.volume = vol;
+        } else {
+          clearInterval(fadeIn);
+        }
+      }, 100);
     }
 
+    // Pausar música al salir de pestaña y reanudar en el mismo punto
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
         if (!musica.paused) {
