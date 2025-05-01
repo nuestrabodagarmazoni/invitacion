@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Invitación de Boda</title>
   <style>
     :root {
@@ -22,18 +22,38 @@
 
     .bienvenida {
       height: 100vh;
-      background-color: var(--blanco);
+      background: url('eucalyptus-green-leaf-and-watercolor-spots-frame-watercolor-floral-illustration-background-for-wedding-invitations-greetings-wallpapers-postcards-vector.jpg') no-repeat center center/cover;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .destello {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: white;
+      z-index: 10;
+      opacity: 0;
+      animation: flash 1s ease forwards;
+    }
+
+    @keyframes flash {
+      0% { opacity: 0; }
+      50% { opacity: 1; }
+      100% { opacity: 0; }
     }
 
     .bienvenida h1 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
+      color: var(--verde-olivo);
+      text-shadow: 1px 1px 2px #ccc;
     }
 
     .ilustracion {
@@ -85,25 +105,6 @@
       font-size: 0.9rem;
       color: #555;
     }
-
-    /* ✨ Destello blanco */
-    .destello {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: white;
-      opacity: 1;
-      z-index: 9999;
-      pointer-events: none;
-      animation: fadeOut 1s ease-out forwards;
-    }
-
-    @keyframes fadeOut {
-      from { opacity: 1; }
-      to { opacity: 0; }
-    }
   </style>
 </head>
 <body>
@@ -128,7 +129,6 @@
       <p>
         Por favor, completá el siguiente formulario para saber si contaremos con tu presencia 🌿
       </p>
-      <!-- Reemplazá este iframe con tu Google Form -->
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDUMMYFORMURL/viewform?embedded=true" loading="lazy">Cargando…</iframe>
     </div>
 
@@ -145,16 +145,20 @@
 
   <script>
     const musica = document.getElementById('musica');
-    let reproduciendo = false;
+    let wasPlaying = false;
 
     function empezar() {
       document.getElementById('bienvenida').style.display = 'none';
       document.getElementById('contenido').style.display = 'block';
 
+      // Destello
+      const flash = document.createElement('div');
+      flash.className = 'destello';
+      document.body.appendChild(flash);
+
+      // Música
       musica.volume = 0;
-      musica.currentTime = 0;
       musica.play();
-      reproduciendo = true;
 
       let vol = 0;
       const subirVolumen = setInterval(() => {
@@ -167,31 +171,15 @@
       }, 200);
     }
 
-    // Detectar cambio de pestaña y reiniciar música + animación de destello
+    // Pausar cuando se cambia de pestaña
     document.addEventListener('visibilitychange', () => {
-      if (document.hidden && reproduciendo) {
+      if (document.hidden) {
+        wasPlaying = !musica.paused;
         musica.pause();
-        musica.currentTime = 0;
-      } else if (!document.hidden && reproduciendo) {
-        musica.play();
-
-        // Crear destello
-        const destello = document.createElement('div');
-        destello.className = 'destello';
-        document.body.appendChild(destello);
-
-        // Remover destello después de la animación
-        setTimeout(() => {
-          destello.remove();
-        }, 1000);
-      }
-    });
-
-    // Al cerrar/navegar fuera, detener música
-    window.addEventListener('beforeunload', () => {
-      if (reproduciendo) {
-        musica.pause();
-        musica.currentTime = 0;
+      } else {
+        if (wasPlaying) {
+          musica.play();
+        }
       }
     });
   </script>
