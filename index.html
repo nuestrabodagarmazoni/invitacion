@@ -2,10 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Invitación de Boda</title>
-  <!-- Fuente manuscrita -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --blanco: #ffffff;
@@ -17,7 +19,7 @@
 
     body {
       margin: 0;
-      font-family: 'Georgia', serif;
+      font-family: 'Open Sans', sans-serif;
       background-color: var(--blanco);
       color: var(--negro);
       scroll-behavior: smooth;
@@ -25,7 +27,7 @@
 
     .bienvenida {
       height: 100vh;
-      background-image: url("https://github.com/nuestrabodagarmazoni/invitacion/blob/main/eucalyptus.jpg?raw=true");
+      background-image: url("https://raw.githubusercontent.com/nuestrabodagarmazoni/invitacion/main/eucalyptus.jpg");
       background-size: cover;
       background-position: center;
       display: flex;
@@ -34,15 +36,13 @@
       justify-content: center;
       text-align: center;
       padding: 2rem;
-      position: relative;
     }
 
     .bienvenida h1 {
-      font-family: 'Georgia', serif;
+      font-family: 'Playfair Display', serif;
       font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--negro);
-      line-height: 1.5;
+      line-height: 1.6;
+      margin-bottom: 2rem;
     }
 
     .btn-empezar {
@@ -71,28 +71,26 @@
       max-width: 800px;
       margin: 0 auto 3rem auto;
       text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease;
+    }
+
+    .seccion.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .seccion h2 {
+      font-family: 'Playfair Display', serif;
       color: var(--verde-olivo);
-      font-size: 1.5rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
     }
 
-    .galeria {
-      display: flex;
-      overflow-x: auto;
-      gap: 1rem;
-      padding: 1rem 0;
-      scroll-snap-type: x mandatory;
-    }
-
-    .galeria img {
-      width: 300px;
-      height: auto;
-      border-radius: 10px;
-      scroll-snap-align: center;
-      flex-shrink: 0;
+    .seccion p {
+      font-size: 1.1rem;
+      line-height: 1.6;
     }
 
     footer {
@@ -102,40 +100,28 @@
       color: #555;
     }
 
-    /* Destello animado */
-    .destello {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: white;
-      opacity: 0;
-      pointer-events: none;
-      z-index: 9999;
-      animation: flash 0.5s ease-out forwards;
+    .carrusel {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 1rem 0;
+      scroll-snap-type: x mandatory;
     }
 
-    @keyframes flash {
-      0% {
-        opacity: 0;
-      }
-      30% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
+    .carrusel img {
+      width: 300px;
+      border-radius: 1rem;
+      scroll-snap-align: center;
     }
   </style>
 </head>
-<body>
 
+<body>
   <section class="bienvenida" id="bienvenida">
     <h1>
-      Cada familia<br>
-      tiene una historia...<br>
-      deseamos que tú<br>
+      Cada familia<br />
+      tiene una historia...<br />
+      deseamos que tú<br />
       seas testigo de la nuestra...
     </h1>
     <button class="btn-empezar" onclick="empezar()">Sí, acepto</button>
@@ -144,59 +130,40 @@
   <section class="contenido" id="contenido">
     <div class="seccion">
       <h2>Te invitamos cordialmente</h2>
-      <p>
-        El amor es la fuerza que une nuestras almas y corazones.<br>
-        Queremos compartir este momento tan especial contigo.
-      </p>
+      <p>El amor es la decisión más bella de caminar juntos para siempre. Con mucha emoción, queremos que seas parte de este gran día.</p>
     </div>
 
     <div class="seccion">
       <h2>Cuándo</h2>
-      <p>
-        Lunes 6 de octubre de 2025<br>
-        18:00 hs
-      </p>
+      <p>El día lunes 6 de octubre de 2025 a las 17:00 hs.</p>
     </div>
 
     <div class="seccion">
       <h2>Dónde</h2>
-      <p>
-        Salón de Eventos "La Esperanza"<br>
-        Av. Siempreviva 123, San Salvador de Jujuy
-      </p>
+      <p>Estancia El Molino, Pilar - Buenos Aires, Argentina</p>
     </div>
 
     <div class="seccion">
       <h2>Código de vestimenta</h2>
-      <p>
-        Elegante formal<br>
-        Colores sugeridos: tonos tierra y verde oliva
-      </p>
-    </div>
-
-    <div class="seccion">
-      <h2>Galería de fotos</h2>
-      <div class="galeria">
-        <img src="URL_DE_TU_IMAGEN_1" alt="Foto 1">
-        <img src="URL_DE_TU_IMAGEN_2" alt="Foto 2">
-        <img src="URL_DE_TU_IMAGEN_3" alt="Foto 3">
-        <!-- Agrega más imágenes según sea necesario -->
-      </div>
+      <p>Formal elegante - Colores claros y neutros</p>
     </div>
 
     <div class="seccion">
       <h2>Confirmación</h2>
-      <p>
-        Por favor, confirmá tu asistencia antes del 15 de septiembre.<br>
-        Contactanos al +54 9 388 123-4567 o al correo: boda@example.com
-      </p>
+      <p>Muy pronto te daremos el enlace para confirmar tu asistencia 🌿</p>
     </div>
 
     <div class="seccion">
-      <h2>Nota importante</h2>
-      <p>
-        Amamos a los niños, pero en esta ocasión deseamos que disfrutes de una noche especial para adultos.
-      </p>
+      <h2>Recuerdos</h2>
+      <div class="carrusel">
+        <img src="https://via.placeholder.com/300x200?text=Foto+1" alt="Foto 1" />
+        <img src="https://via.placeholder.com/300x200?text=Foto+2" alt="Foto 2" />
+        <img src="https://via.placeholder.com/300x200?text=Foto+3" alt="Foto 3" />
+      </div>
+    </div>
+
+    <div class="seccion">
+      <p style="font-style: italic; color: #777;">Con mucho amor, pero sin niños en esta ocasión. Deseamos que todos puedan relajarse y disfrutar plenamente.</p>
     </div>
 
     <footer>
@@ -204,54 +171,33 @@
     </footer>
   </section>
 
-  <!-- Música -->
   <audio id="musica" loop preload="auto">
-    <source src="https://github.com/nuestrabodagarmazoni/invitacion/raw/refs/heads/main/Lady%20Gaga,%20Bruno%20Mars%20-%20Die%20With%20A%20Smile%20(Official%20Music%20Video)%20-%20LadyGagaVEVO.mp3" type="audio/mpeg" />
+    <source src="https://raw.githubusercontent.com/nuestrabodagarmazoni/invitacion/main/DieToSmile.mp3" type="audio/mpeg" />
     Tu navegador no soporta audio.
   </audio>
 
   <script>
     const musica = document.getElementById('musica');
-    let wasPlaying = false;
 
     function empezar() {
       document.getElementById('bienvenida').style.display = 'none';
       document.getElementById('contenido').style.display = 'block';
-
-      // Mostrar destello blanco
-      const destello = document.createElement('div');
-      destello.classList.add('destello');
-      document.body.appendChild(destello);
-
-      // Reproducir música suavemente
-      musica.volume = 0;
+      musica.volume = 0.5;
       musica.play();
-      let vol = 0;
-      const fadeIn = setInterval(() => {
-        if (vol < 0.5) {
-          vol += 0.05;
-          musica.volume = vol;
-        } else {
-          clearInterval(fadeIn);
-        }
-      }, 100);
     }
 
-    // Pausar música al salir de pestaña y reanudar en el mismo punto
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        if (!musica.paused) {
-          musica.pause();
-          wasPlaying = true;
+    // Mostrar efectos en scroll
+    const secciones = document.querySelectorAll('.seccion');
+    const mostrarSeccion = () => {
+      secciones.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          sec.classList.add('visible');
         }
-      } else {
-        if (wasPlaying) {
-          musica.play();
-          wasPlaying = false;
-        }
-      }
-    });
+      });
+    };
+    window.addEventListener('scroll', mostrarSeccion);
+    window.addEventListener('load', mostrarSeccion);
   </script>
-
 </body>
 </html>
