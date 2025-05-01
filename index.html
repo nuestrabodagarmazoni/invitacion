@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Invitación de Boda</title>
 
-  <!-- Fuente manuscrita -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Fuente elegante y legible -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -27,7 +27,7 @@
 
     .bienvenida {
       height: 100vh;
-      background-image: url("https://github.com/nuestrabodagarmazoni/invitacion/blob/main/eucalyptus.jpg?raw=true"); /* Reemplaza esta URL por tu imagen de fondo */
+      background-image: url('https://raw.githubusercontent.com/nuestrabodagarmazoni/invitacion/main/eucalyptus.jpg');
       background-size: cover;
       background-position: center;
       display: flex;
@@ -40,17 +40,12 @@
     }
 
     .bienvenida h1 {
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Playfair Display', serif;
       font-size: 2.4rem;
       margin-bottom: 1.5rem;
       color: var(--negro);
-      line-height: 1.6; /* Asegura que haya espacio entre líneas */
-    }
-
-    .ilustracion {
-      width: 180px;
-      margin-bottom: 1rem;
-      display: none; /* Ocultar la imagen con texto alternativo */
+      line-height: 1.4;
+      white-space: pre-line;
     }
 
     .btn-empezar {
@@ -83,14 +78,23 @@
 
     .seccion h2 {
       color: var(--verde-olivo);
-      font-size: 1.5rem;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
     }
 
-    iframe {
-      width: 100%;
-      height: 600px;
-      border: none;
-      margin-top: 1rem;
+    .galeria {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 1rem 0;
+      scroll-snap-type: x mandatory;
+    }
+
+    .galeria img {
+      height: 300px;
+      border-radius: 20px;
+      scroll-snap-align: center;
+      flex-shrink: 0;
     }
 
     footer {
@@ -100,7 +104,6 @@
       color: #555;
     }
 
-    /* Destello animado */
     .destello {
       position: fixed;
       top: 0;
@@ -111,19 +114,13 @@
       opacity: 0;
       pointer-events: none;
       z-index: 9999;
-      animation: flash 1s ease-out forwards;
+      animation: flash 0.6s ease-out forwards;
     }
 
     @keyframes flash {
-      0% {
-        opacity: 0;
-      }
-      30% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
+      0% { opacity: 0; }
+      30% { opacity: 1; }
+      100% { opacity: 0; }
     }
   </style>
 </head>
@@ -132,27 +129,58 @@
 
   <section class="bienvenida" id="bienvenida">
     <h1>
-      "Cada familia<br> tiene una historia...<br> deseamos que tú<br> seas testigo de la nuestra..."
+      Cada familia
+      tiene una historia...
+      deseamos que tú
+      seas testigo de la nuestra...
     </h1>
-    <img src="https://via.placeholder.com/180x120?text=👩‍❤️‍👨🐶🐶🐱" alt="Ilustración pareja y mascotas" class="ilustracion" />
     <button class="btn-empezar" onclick="empezar()">Sí, acepto</button>
   </section>
 
   <section class="contenido" id="contenido">
     <div class="seccion">
-      <h2>¡Nos casamos!</h2>
+      <h2>Te invitamos cordialmente</h2>
       <p>
-        Con mucha emoción, queremos invitarte a compartir un día muy especial con nosotros.<br>
-        Te esperamos el <strong>6 de octubre de 2025</strong> para celebrar el amor, la familia y la amistad.
+        El matrimonio es el encuentro de dos almas que deciden compartir su vida, risas y sueños.<br>
+        Cada paso que damos juntos es una promesa de amor eterno,<br>
+        y queremos que seas testigo de este hermoso comienzo.
       </p>
     </div>
 
     <div class="seccion">
-      <h2>Confirmá tu asistencia</h2>
-      <p>
-        Por favor, completá el siguiente formulario para saber si contaremos con tu presencia 🌿
+      <h2>Cuándo</h2>
+      <p>El <strong>6 de octubre de 2025</strong>, será el día en que celebremos nuestro amor junto a ti.</p>
+    </div>
+
+    <div class="seccion">
+      <h2>Dónde</h2>
+      <p>La ceremonia y la fiesta se llevarán a cabo en un lugar especial, que pronto compartiremos contigo.</p>
+    </div>
+
+    <div class="seccion">
+      <h2>Código de vestimenta</h2>
+      <p>Formal elegante · Tonos neutros y naturales sugeridos · Celebremos con estilo.</p>
+    </div>
+
+    <div class="seccion">
+      <h2>Confirmación</h2>
+      <p>Pronto habilitaremos una forma para confirmar tu asistencia. ¡Gracias por esperarnos!</p>
+    </div>
+
+    <div class="seccion">
+      <h2>Momentos especiales</h2>
+      <div class="galeria">
+        <img src="https://via.placeholder.com/400x300?text=Foto+1" alt="Foto 1">
+        <img src="https://via.placeholder.com/400x300?text=Foto+2" alt="Foto 2">
+        <img src="https://via.placeholder.com/400x300?text=Foto+3" alt="Foto 3">
+      </div>
+    </div>
+
+    <div class="seccion">
+      <p style="font-style: italic; color: #666;">
+        Para que todos podamos disfrutar plenamente, esta será una celebración solo para adultos.<br>
+        ¡Gracias por tu comprensión y cariño!
       </p>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfDUMMYFORMURL/viewform?embedded=true" loading="lazy">Cargando…</iframe>
     </div>
 
     <footer>
@@ -170,31 +198,18 @@
     const musica = document.getElementById('musica');
     let wasPlaying = false;
 
-    // Botón de inicio
     function empezar() {
       document.getElementById('bienvenida').style.display = 'none';
       document.getElementById('contenido').style.display = 'block';
 
-      // Mostrar destello blanco
       const destello = document.createElement('div');
       destello.classList.add('destello');
       document.body.appendChild(destello);
 
-      // Reproducir música suavemente
-      musica.volume = 0;
+      musica.volume = 0.4;
       musica.play();
-      let vol = 0;
-      const fadeIn = setInterval(() => {
-        if (vol < 0.5) {
-          vol += 0.01;
-          musica.volume = vol;
-        } else {
-          clearInterval(fadeIn);
-        }
-      }, 200);
     }
 
-    // Pausar música al salir de pestaña y reanudar en el mismo punto
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
         if (!musica.paused) {
