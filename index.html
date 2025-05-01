@@ -25,30 +25,32 @@
       scroll-behavior: smooth;
     }
 
-.bienvenida {
-  height: 100vh;
-  background-image: url("https://github.com/nuestrabodagarmazoni/invitacion/blob/main/eucalyptus.jpg?raw=true");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 2rem;
-  position: relative;
-}
+    .bienvenida {
+      height: 100vh;
+      background-image: url("https://github.com/nuestrabodagarmazoni/invitacion/blob/main/eucalyptus.jpg?raw=true"); /* Reemplaza esta URL por tu imagen de fondo */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
 
     .bienvenida h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 2.4rem;
       margin-bottom: 1.5rem;
       color: var(--negro);
+      line-height: 1.6; /* Asegura que haya espacio entre líneas */
     }
 
     .ilustracion {
       width: 180px;
       margin-bottom: 1rem;
+      display: none; /* Ocultar la imagen con texto alternativo */
     }
 
     .btn-empezar {
@@ -129,7 +131,9 @@
 <body>
 
   <section class="bienvenida" id="bienvenida">
-    <h1>"Cada familia tiene una historia, bienvenido a la nuestra..."</h1>
+    <h1>
+      "Cada familia<br> tiene una historia...<br> deseamos que tú<br> seas testigo de la nuestra..."
+    </h1>
     <img src="https://via.placeholder.com/180x120?text=👩‍❤️‍👨🐶🐶🐱" alt="Ilustración pareja y mascotas" class="ilustracion" />
     <button class="btn-empezar" onclick="empezar()">Sí, acepto</button>
   </section>
