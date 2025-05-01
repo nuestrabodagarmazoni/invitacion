@@ -2,14 +2,19 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Invitación de Boda</title>
+
+  <!-- Fuente manuscrita -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --blanco: #ffffff;
       --negro: #000000;
       --dorado: #c5a253;
       --verde-olivo: #708238;
+      --verde-olivo-claro: #a5b67a;
     }
 
     body {
@@ -22,7 +27,9 @@
 
     .bienvenida {
       height: 100vh;
-      background: url('eucalyptus-green-leaf-and-watercolor-spots-frame-watercolor-floral-illustration-background-for-wedding-invitations-greetings-wallpapers-postcards-vector.jpg') no-repeat center center/cover;
+      background-image: url("eucalyptus-green-leaf-and-watercolor-spots-frame-watercolor-floral-illustration-background-for-wedding-invitations-greetings-wallpapers-postcards-vector.jpg");
+      background-size: cover;
+      background-position: center;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -30,30 +37,13 @@
       text-align: center;
       padding: 2rem;
       position: relative;
-      z-index: 1;
-    }
-
-    .destello {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: white;
-      z-index: 10;
-      opacity: 0;
-      animation: flash 1s ease forwards;
-    }
-
-    @keyframes flash {
-      0% { opacity: 0; }
-      50% { opacity: 1; }
-      100% { opacity: 0; }
     }
 
     .bienvenida h1 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: var(--verde-olivo);
-      text-shadow: 1px 1px 2px #ccc;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.4rem;
+      margin-bottom: 1.5rem;
+      color: var(--negro);
     }
 
     .ilustracion {
@@ -62,18 +52,20 @@
     }
 
     .btn-empezar {
-      background-color: var(--dorado);
+      background-color: var(--verde-olivo-claro);
       border: none;
-      color: var(--blanco);
-      padding: 0.75rem 1.5rem;
-      font-size: 1.1rem;
+      color: var(--negro);
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      font-family: 'Arial Black', Arial, sans-serif;
       cursor: pointer;
-      border-radius: 20px;
-      transition: background-color 0.3s ease;
+      border-radius: 30px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     .btn-empezar:hover {
-      background-color: #b19045;
+      background-color: #8e9f61;
+      transform: scale(1.05);
     }
 
     .contenido {
@@ -105,8 +97,35 @@
       font-size: 0.9rem;
       color: #555;
     }
+
+    /* Destello animado */
+    .destello {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: white;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9999;
+      animation: flash 1s ease-out forwards;
+    }
+
+    @keyframes flash {
+      0% {
+        opacity: 0;
+      }
+      30% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <section class="bienvenida" id="bienvenida">
@@ -138,7 +157,7 @@
   </section>
 
   <!-- Música -->
-  <audio id="musica" loop>
+  <audio id="musica" loop preload="auto">
     <source src="https://github.com/nuestrabodagarmazoni/invitacion/raw/refs/heads/main/Lady%20Gaga,%20Bruno%20Mars%20-%20Die%20With%20A%20Smile%20(Official%20Music%20Video)%20-%20LadyGagaVEVO.mp3" type="audio/mpeg" />
     Tu navegador no soporta audio.
   </audio>
@@ -147,38 +166,41 @@
     const musica = document.getElementById('musica');
     let wasPlaying = false;
 
+    // Botón de inicio
     function empezar() {
       document.getElementById('bienvenida').style.display = 'none';
       document.getElementById('contenido').style.display = 'block';
 
-      // Destello
-      const flash = document.createElement('div');
-      flash.className = 'destello';
-      document.body.appendChild(flash);
+      // Mostrar destello blanco
+      const destello = document.createElement('div');
+      destello.classList.add('destello');
+      document.body.appendChild(destello);
 
-      // Música
+      // Reproducir música suavemente
       musica.volume = 0;
       musica.play();
-
       let vol = 0;
-      const subirVolumen = setInterval(() => {
+      const fadeIn = setInterval(() => {
         if (vol < 0.5) {
           vol += 0.01;
           musica.volume = vol;
         } else {
-          clearInterval(subirVolumen);
+          clearInterval(fadeIn);
         }
       }, 200);
     }
 
-    // Pausar cuando se cambia de pestaña
-    document.addEventListener('visibilitychange', () => {
+    // Pausar música al salir de pestaña y reanudar en el mismo punto
+    document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
-        wasPlaying = !musica.paused;
-        musica.pause();
+        if (!musica.paused) {
+          musica.pause();
+          wasPlaying = true;
+        }
       } else {
         if (wasPlaying) {
           musica.play();
+          wasPlaying = false;
         }
       }
     });
